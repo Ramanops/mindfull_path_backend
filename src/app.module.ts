@@ -6,6 +6,7 @@ import { JournalModule } from './modules/journal/journal.module';
 import { MoodModule } from './modules/mood/mood.module';
 import { StreakModule } from './modules/streak/streak.module';
 import { ChatModule } from './modules/chat/chat.module'; // ✅ ADD THIS
+import { AnalyticsModule } from './modules/analytics/analytics.module';
 
 import { authMiddleware } from './middleware/auth.middleware';
 
@@ -19,7 +20,8 @@ import { authMiddleware } from './middleware/auth.middleware';
     JournalModule,
     MoodModule,
     StreakModule,
-    ChatModule, // ✅ ADD THIS
+    ChatModule, 
+    AnalyticsModule,// ✅ ADD THIS
   ],
 })
 export class AppModule implements NestModule {
