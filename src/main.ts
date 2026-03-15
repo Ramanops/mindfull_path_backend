@@ -23,6 +23,7 @@ async function bootstrap() {
   // global error handler
   app.useGlobalFilters(new SentryFilter());
 
-  await app.listen(3000);
+  // ⭐ Use Railway's PORT and bind to 0.0.0.0
+  await app.listen(process.env.PORT ?? 3000, '0.0.0.0');
 }
 bootstrap();
