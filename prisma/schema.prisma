@@ -14,10 +14,11 @@ enum ChatRole {
 }
 
 model User {
-  id           String   @id @default(uuid())
-  email        String   @unique
-  passwordHash String
-  createdAt    DateTime @default(now())
+  id                  String   @id @default(uuid())
+  email               String   @unique
+  passwordHash        String
+  securityAnswerHash  String?
+  createdAt           DateTime @default(now())
 
   moods        MoodEntry[]
   journals     JournalEntry[]

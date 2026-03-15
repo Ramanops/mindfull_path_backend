@@ -17,7 +17,9 @@ export function authMiddleware(req: Request, res: Response, next: NextFunction) 
   // PUBLIC ROUTES
   if (
     url.includes('/auth/register') ||
-    url.includes('/auth/login')
+    url.includes('/auth/login') ||
+    url.includes('/auth/verify-security') ||
+    url.includes('/auth/reset-password')
   ) {
     return next();
   }
