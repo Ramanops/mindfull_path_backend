@@ -7,10 +7,9 @@ import { SentryFilter } from './common/sentry.filter';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
-  // ⭐ Enable CORS
+  // ⭐ Enable CORS for all origins
   app.enableCors({
-    origin: true,
-    credentials: true,
+    origin: "*",
   });
 
   // ⭐ Global API prefix
@@ -23,7 +22,7 @@ async function bootstrap() {
   // global error handler
   app.useGlobalFilters(new SentryFilter());
 
-  // ⭐ Use Railway's PORT and bind to 0.0.0.0
+  // ⭐ Use Railway PORT
   await app.listen(process.env.PORT ?? 3000, '0.0.0.0');
 }
 bootstrap();
