@@ -5,29 +5,24 @@ import { AppModule } from './app.module';
 import { SentryFilter } from './common/sentry.filter';
 
 async function bootstrap() {
-const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create(AppModule);
 
-// Enable CORS
-app.enableCors({
-origin: "*",
-});
+  // ⭐ Enable CORS for all origins
+  app.enableCors({
+    origin: "*",
+  });
 
-// Global API prefix
-app.setGlobalPrefix('api');
+  // ⭐ Global API prefix
+  app.setGlobalPrefix('api');
 
-// Security middleware
-app.use(helmet());
-app.use(cookieParser());
+  // security middleware
+  app.use(helmet());
+  app.use(cookieParser());
 
-// Global error handler
-app.useGlobalFilters(new SentryFilter());
+  // global error handler
+  app.useGlobalFilters(new SentryFilter());
 
-// Dynamic port (required for cloud platforms)
-const port = process.env.PORT || 3000;
-
-await app.listen(port, '0.0.0.0');
-
-console.log(`Server running on port ${port}`);
+  // ⭐ Use Railway PORT
+  await app.listen(process.env.PORT ?? 3000, '0.0.0.0');
 }
-
 bootstrap();
